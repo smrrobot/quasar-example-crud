@@ -42,7 +42,7 @@
     <q-page-container>
     <q-breadcrumbs gutter="md" class="q-pa-md" separator=">" color="primary">
         <q-breadcrumbs-el
-          to=""
+          to="/"
           label="Home"
         />
         <q-breadcrumbs-el
@@ -74,6 +74,7 @@
 
       </q-breadcrumbs>
       <router-view />
+
     </q-page-container>
   </q-layout>
 </template>
