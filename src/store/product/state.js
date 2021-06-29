@@ -3,15 +3,11 @@ export default function () {
     lists: [
       {
         id: 1,
-        name: 'Le Minerale',
-        price: 500,
-        description: '12oz Miniral water'
-      },{
-        id: 2,
-        name: 'Ryzen 7 3770x',
-        price: 1200,
-        description: 'AMD Processor'
-      },
+        name: 'Havoc 2.0',
+        category: 'High',
+        price: 270,
+        description: '120ml Drizzle'
+      }
     ]
   }
 }

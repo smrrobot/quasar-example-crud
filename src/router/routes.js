@@ -12,12 +12,12 @@ const routes = [
           {
             name: 'route-products',
             path: '',
-            component: () => import('pages/products/table'),
+            component: () => import('pages/products/Product-Table'),
           },
           {
             name: 'route-products-form',
             path: 'form/:id?',
-            component: () => import('pages/products/form'),
+            component: () => import('pages/products/Product-Form'),
           }
         ]
       },

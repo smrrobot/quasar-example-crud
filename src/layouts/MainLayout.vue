@@ -48,12 +48,12 @@
         <q-breadcrumbs-el
           to="/products"
           label="Products"
-          v-if="$route.path === '/products' || $route.path === '/products/form/:id'"
+          v-if="$route.path === '/products' || $route.name === 'route-products-form'"
         />
         <q-breadcrumbs-el
           to=""
           label="Form"
-          v-if="$route.path === '/products/form/:id'"
+          v-if="$route.name === 'route-products-form'"
         />
         <q-breadcrumbs-el
           to=""
@@ -86,17 +86,17 @@ const linksList = [
   {
     title: 'Products',
     // caption: 'quasar.dev',
-    icon: 'school',
+    icon: 'inventory_2',
     link: 'route-products'
   },{
     title: 'Categories',
     // caption: 'quasar.dev',
-    icon: 'school',
+    icon: 'category',
     link: 'route-categories'
   },{
     title: 'About',
     // caption: 'quasar.dev',
-    icon: 'school',
+    icon: 'info',
     link: 'route-about'
   },
 

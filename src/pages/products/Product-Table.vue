@@ -9,6 +9,7 @@
         to="/products/form/:id"
         class="float-right q-mb-md newButton"
         />
+      <!-- Table -->
       <q-table flat virtual-scroll title="" :rows="prodItem" :columns="columns" row-key="id">
         <template v-slot:body="props">
           <q-tr :props="props">
@@ -17,7 +18,7 @@
             <q-td key="description" :props="props">{{ props.row.description }}</q-td>
             <q-td key="price" :props="props">{{ props.row.price }}</q-td>
             <q-td key="actions" :props="props" class="q-gutter-x-xs">
-              <q-btn color="blue" icon="edit" size=sm no-caps round></q-btn>
+              <q-btn color="blue" icon="edit" size=sm no-caps round @click="editProduct(props.row.id)"></q-btn>
               <q-btn color="red" icon="delete" @click="deleteConfirmation(props.row.id)" size=sm no-caps round></q-btn>
             </q-td>
           </q-tr>
@@ -82,7 +83,7 @@
   import { ref } from 'vue'
   import { mapGetters } from 'vuex';
   export default {
-    // name: 'PageName',
+     name: 'Product-Table',
     data() {
       return {
         confirm: ref(false),
@@ -100,6 +101,9 @@
       }
     },
     methods: {
+      editProduct(product) {
+				this.$router.push({ name: 'route-products-form', params: { id: product } });
+			},
       deleteItem(item) {
         const index = this.data.indexOf(item);
         // confirm("Are you sure you want to delete this item?") &&
