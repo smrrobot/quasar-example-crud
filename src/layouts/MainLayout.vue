@@ -36,11 +36,13 @@
           :key="link.title"
           v-bind="link"
         />
+
       </q-list>
     </q-drawer>
 
     <q-page-container>
-    <q-breadcrumbs gutter="md" class="q-pa-md" separator=">" color="primary">
+      <!-- <BreadCrumbs/> -->
+    <!-- <q-breadcrumbs gutter="md" class="q-pa-md" separator=">" color="primary">
         <q-breadcrumbs-el
           to="/"
           label="Home"
@@ -65,14 +67,7 @@
           label='About'
           v-if="$route.path === '/about'"
         />
-
-        <!-- <q-breadcrumbs-el
-          v-if="$route.path == '/product/form'"
-          label='Form'
-        /> -->
-
-
-      </q-breadcrumbs>
+      </q-breadcrumbs> -->
       <router-view />
 
     </q-page-container>
@@ -81,6 +76,7 @@
 
 <script>
 import EssentialLink from 'components/EssentialLink.vue'
+import BreadCrumbs from 'components/BreadCrumbs.vue'
 
 const linksList = [
   {
@@ -114,7 +110,8 @@ export default defineComponent({
   },
 
   components: {
-    EssentialLink
+    EssentialLink,
+    BreadCrumbs
   },
 
   setup () {

@@ -1,33 +1,33 @@
 <template>
   <q-page class="col q-pl-lg q-pr-lg">
-    <div class="row q-pb-lg q-pt-lg">
-      <div class="col justify-end">
-        <span class="text-h6">Product Form</span>
-      </div>
-    </div>
 
-    <q-form class="q-gutter-md q-pr-lg" ref="form-products">
-      <div class="row q-gutter-md">
-        <div class="col-lg-5 col-xs-12">
-          <q-input :rules="rules.name" filled v-model="product.name" label="Product Name *" lazy-rules />
+
+    <q-form class="" ref="form-products">
+      <div class="row q-mt-xl">
+        <div class="col-lg-5 col-xs-12 q-mr-xl">
+          <span class="text-subtitle1">Product Name *</span>
+          <q-input :rules="rules.name" outlined v-model="product.name" lazy-rules dense/>
         </div>
         <div class="col-lg-5 col-xs-12">
-          <q-input filled v-model="product.category" label="Category" lazy-rules />
+          <span class="text-subtitle1 ">Category</span>
+          <q-input outlined v-model="product.category" lazy-rules dense/>
         </div>
       </div>
-      <div class="row q-gutter-md">
-        <div class="col-12">
-          <q-input :rules="rules.description" filled v-model="product.description" label="Description *" lazy-rules type="textarea" />
+      <div class="row q-mt-md">
+        <div class="col-12 ">
+          <span class="text-subtitle1">Description</span>
+          <q-input :rules="rules.description" outlined v-model="product.description"  lazy-rules dense type="textarea" />
         </div>
       </div>
-      <div class="row q-gutter-md">
-        <div class="col-5">
-          <q-input filled v-model="product.price" label="Price" lazy-rules type="number" />
+      <div class="row q-mt-md">
+        <div class="col-5 ">
+          <span class="text-subtitle1">Price</span>
+          <q-input outlined v-model="product.price" lazy-rules type="number" dense/>
         </div>
       </div>
-      <div class="row q-gutter-md">
-        <div class="col-5">
-          <q-btn label="Submit" color="primary" @click="submitForm"/>
+      <div class="row self-end justify-end q-mt-xl">
+        <div class="col-2" style="margin-top: 4%;">
+          <q-btn label="Save" color="positive" class="float-right" padding="sm xl" @click="submitForm"/>
         </div>
       </div>
     </q-form>
@@ -120,7 +120,7 @@
             color,
             position: 'bottom-left',
             classes: 'form-alert',
-            timeout: '1000'
+            timeout: '1500'
           })
         }
 

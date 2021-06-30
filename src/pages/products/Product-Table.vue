@@ -1,16 +1,18 @@
 <template>
-  <q-page padding>
+  <q-page>
     <!-- content -->
-    <div>
-      <q-btn
-        color="positive"
-        label="New"
-        size=".8rem"
-        to="/products/form/:id"
-        class="float-right q-mb-md newButton"
-        />
+    <div class="q-mx-lg">
       <!-- Table -->
-      <q-table flat virtual-scroll title="" :rows="prodItem" :columns="columns" row-key="id">
+      <q-table
+      flat
+      virtual-scroll
+      title=""
+      :rows="prodItem"
+      :columns="columns"
+      row-key="id"
+      :pagination="pagination"
+
+      >
         <template v-slot:body="props">
           <q-tr :props="props">
             <q-td key="id" :props="props">{{ props.row.id }}</q-td>
@@ -22,7 +24,55 @@
               <q-btn color="red" icon="delete" @click="deleteConfirmation(props.row.id)" size=sm no-caps round></q-btn>
             </q-td>
           </q-tr>
-        </template> -->
+        </template>
+
+        <!-- Pagination -->
+        <template v-slot:pagination="scope">
+          <!-- <q-btn
+            v-if="scope.pagesNumber > 2"
+            label="first_page"
+            color="grey-8"
+            round
+            dense
+            flat
+            :disable="scope.isFirstPage"
+            @click="scope.firstPage"
+          /> -->
+
+          <q-btn
+            icon="west"
+            label="Previous"
+            color="grey-8"
+            rounded
+            dense
+            flat
+            :disable="scope.isFirstPage"
+            @click="scope.prevPage"
+          />
+
+          <q-btn
+            label="Next"
+            icon="east"
+            color="grey-8"
+            rounded
+            dense
+            flat
+            :disable="scope.isLastPage"
+            @click="scope.nextPage"
+          />
+
+          <!-- <q-btn
+            v-if="scope.pagesNumber > 2"
+            icon="last_page"
+            color="grey-8"
+            round
+            dense
+            flat
+            :disable="scope.isLastPage"
+            @click="scope.lastPage"
+          /> -->
+        </template>
+
       </q-table>
 
       <!-- Delete Dialog -->
@@ -51,7 +101,7 @@
       align: 'start',
       field: row => row.id,
       format: val => `${val}`,
-      // sortable: true
+      sortable: true
     },
     {
       name: 'productName',
@@ -81,14 +131,18 @@
   ]
 
   import { ref } from 'vue'
-  import { mapGetters } from 'vuex';
+  import { mapGetters } from 'vuex'
   export default {
-     name: 'Product-Table',
+    name: 'Product-Table',
+    components: {
+
+    },
     data() {
       return {
         confirm: ref(false),
         address: ref(''),
-        activeForDeletion: null
+        activeForDeletion: null,
+        PageTitle: 'Hello World'
       }
     },
 
@@ -122,9 +176,18 @@
     setup() {
       return {
         columns,
-        // rows,
+        // Next,
+        pagination: {
+        sortBy: 'desc',
+        descending: false,
+        page: 1,
+        rowsPerPage: 5
+        // rowsNumber: xx if getting data from a server
+      },
+
 
       }
+
     },
 
   }

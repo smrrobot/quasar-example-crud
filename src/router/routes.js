@@ -13,11 +13,17 @@ const routes = [
             name: 'route-products',
             path: '',
             component: () => import('pages/products/Product-Table'),
+            meta: {
+              title: 'Product List'
+            }
           },
           {
             name: 'route-products-form',
             path: 'form/:id?',
             component: () => import('pages/products/Product-Form'),
+            meta: {
+              title: 'Product Form'
+            }
           }
         ]
       },

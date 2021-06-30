@@ -7,7 +7,42 @@ export default function () {
         category: 'High',
         price: 270,
         description: '120ml Drizzle'
-      }
+      },
+      {
+        id: 2,
+        name: 'Apple',
+        category: 'High',
+        price: 270,
+        description: '120ml Drizzle'
+      },
+      {
+        id: 3,
+        name: 'Orange',
+        category: 'High',
+        price: 270,
+        description: '120ml Drizzle'
+      },
+      {
+        id: 4,
+        name: 'Grapes',
+        category: 'High',
+        price: 270,
+        description: '120ml Drizzle'
+      },
+      {
+        id: 5,
+        name: 'Lumpia',
+        category: 'High',
+        price: 270,
+        description: '120ml Drizzle'
+      },
+      {
+        id: 6,
+        name: 'Sanaol T-shirt',
+        category: 'High',
+        price: 270,
+        description: '120ml Drizzle'
+      },
     ]
   }
 }
