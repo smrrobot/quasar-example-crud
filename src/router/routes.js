@@ -26,12 +26,34 @@ const routes = [
             }
           }
         ]
+
+
       },
+      // ROUTE CATEGORIES
       {
-        name: 'route-categories',
+        name: '',
         path: 'categories',
-        component: () => import('pages/categories/table')
+        component: () => import('layouts/CategoryLayout'),
+        children: [
+          {
+            name: 'route-categories',
+            path: '',
+            component: () => import('pages/categories/Category-Table'),
+            meta: {
+              title: 'Categories'
+            },
+          },
+          {
+            name: 'route-category-form',
+            path: 'form/:id?',
+            component: () => import('pages/categories/Category-Form'),
+            meta: {
+              title: 'Category Form'
+            },
+          }
+        ]
       },
+      // route-category-form
       {
         name: 'route-about',
         path: 'about',

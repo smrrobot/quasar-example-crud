@@ -15,3 +15,9 @@ export function MODIFY_PRODUCT(state, payload){
 export function INSERT_PRODUCT(state, payload){
   state.lists.unshift(payload)
 }
+
+
+export function REMOVE_CATEGORY(state, payload){
+  let index = state.category.findIndex(p => p.id === payload);
+  index !== -1 && state.category.splice(index, 1)
+}

@@ -10,3 +10,7 @@ export function UPDATE_PRODUCT({commit}, payload){
 export function SAVE_PRODUCT({commit}, payload){
   commit('INSERT_PRODUCT', payload)
 }
+
+export function DELETE_CATEGORY({commit}, payload){
+  commit('REMOVE_CATEGORY', payload)
+}

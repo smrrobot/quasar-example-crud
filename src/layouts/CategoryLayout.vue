@@ -22,7 +22,6 @@
 
         </div>
       </div>
-
       <BreadCrumbs/>
       <router-view />
     </q-page-container>
@@ -50,16 +49,15 @@ export default {
 
     buttonProduct(){
 
-      if(this.$route.name === 'route-products'){
-        this.navRoute.togo = '/products/form/'
+      if(this.$route.name === 'route-categories'){
+        this.navRoute.togo = '/categories/form/'
         return this.navRoute.label = 'New'
-      }else if(this.$route.name === 'route-products-form'){
-        this.navRoute.togo = '/products'
+      }else if(this.$route.name === 'route-category-form'){
+        this.navRoute.togo = '/categories'
         return this.label = 'Back'
       }
     }
   },
-
 
 }
 </script>

@@ -21,7 +21,7 @@
       v-model="leftDrawerOpen"
       show-if-above
       bordered
-      class="bg-grey-1"
+      class="bg-secondary"
     >
       <q-list>
         <q-item-label
@@ -41,33 +41,7 @@
     </q-drawer>
 
     <q-page-container>
-      <!-- <BreadCrumbs/> -->
-    <!-- <q-breadcrumbs gutter="md" class="q-pa-md" separator=">" color="primary">
-        <q-breadcrumbs-el
-          to="/"
-          label="Home"
-        />
-        <q-breadcrumbs-el
-          to="/products"
-          label="Products"
-          v-if="$route.path === '/products' || $route.name === 'route-products-form'"
-        />
-        <q-breadcrumbs-el
-          to=""
-          label="Form"
-          v-if="$route.name === 'route-products-form'"
-        />
-        <q-breadcrumbs-el
-          to=""
-          label='Categories'
-          v-if="$route.path === '/categories'"
-        />
-        <q-breadcrumbs-el
-          to=""
-          label='About'
-          v-if="$route.path === '/about'"
-        />
-      </q-breadcrumbs> -->
+
       <router-view />
 
     </q-page-container>

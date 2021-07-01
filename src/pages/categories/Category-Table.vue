@@ -17,12 +17,10 @@
       >
         <template v-slot:body="props">
           <q-tr :props="props">
-            <q-td key="id" :props="props">{{ props.row.id }}</q-td>
-            <q-td key="productName" :props="props">{{ props.row.name }}</q-td>
-            <q-td key="description" :props="props">{{ props.row.description }}</q-td>
-            <q-td key="price" :props="props">{{ props.row.price }}</q-td>
+
+            <q-td key="category" :props="props">{{ props.row.category }}</q-td>
             <q-td key="actions" :props="props" class="q-gutter-x-xs">
-              <q-btn color="blue" icon="edit" size=sm no-caps round @click="editProduct(props.row.id)"></q-btn>
+              <q-btn color="blue" icon="edit" size=sm no-caps round @click="editCategory(props.row.id)"></q-btn>
               <q-btn color="red" icon="delete" @click="deleteConfirmation(props.row.id)" size=sm no-caps round></q-btn>
             </q-td>
           </q-tr>
@@ -91,32 +89,20 @@
 </template>
 
 <script>
-  const columns = [{
-      name: 'id',
-      required: true,
-      label: 'ID',
-      align: 'start',
-      field: row => row.id,
-      format: val => `${val}`
-    },
+  const columns = [
+    // {
+    //   name: 'id',
+    //   required: true,
+    //   label: 'ID',
+    //   align: 'start',
+    //   field: row => row.id,
+    //   format: val => `${val}`
+    // },
     {
-      name: 'productName',
-      label: 'Product Name',
+      name: 'category',
+      label: 'Category',
       align: 'center',
-      field: 'productName',
-      // sortable: true
-    },
-    {
-      name: 'description',
-      align: 'center',
-      label: 'Description',
-      field: 'description'
-    },
-    {
-      name: 'price',
-      align: 'center',
-      label: 'Price',
-      field: 'price'
+      field: 'category',
     },
     {
       name: 'actions',
@@ -129,7 +115,7 @@
   import { ref } from 'vue'
   import { mapGetters } from 'vuex'
   export default {
-    name: 'Product-Table',
+    name: 'Category-Table',
     components: {
 
     },
@@ -145,15 +131,15 @@
 
     computed: {
       ...mapGetters({
-        'getProducts': 'products/GET_PRODUCTS',
+        'getCategories': 'products/GET_CATEGORIES',
       }),
       prodItem() {
-        return Object.values(this.getProducts);
+        return Object.values(this.getCategories);
       }
     },
     methods: {
-      editProduct(product) {
-				this.$router.push({ name: 'route-products-form', params: { id: product } });
+      editCategory(product) {
+				this.$router.push({ name: 'route-category-form', params: { id: product } });
 			},
       deleteItem(item) {
         const index = this.data.indexOf(item);
@@ -165,7 +151,7 @@
         this.activeForDeletion = product;
       },
       deleteProduct(){
-			  this.$store.dispatch('products/DELETE_PRODUCT', this.activeForDeletion)
+			  this.$store.dispatch('products/DELETE_CATEGORY', this.activeForDeletion)
 
       }
     },

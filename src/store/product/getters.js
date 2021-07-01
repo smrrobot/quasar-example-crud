@@ -4,4 +4,9 @@ export function GET_PRODUCTS (state) {
 
 }
 
+export function GET_CATEGORIES (state) {
+	return state.category;
+
+}
+
 
