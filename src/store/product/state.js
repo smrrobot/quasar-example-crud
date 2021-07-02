@@ -83,11 +83,11 @@ export default function () {
     category: [
       {
         id: 1,
-        category: 'Fruits'
+        name: 'Fruits'
       },
       {
         id: 2,
-        category: 'Cloths'
+        name: 'Cloths'
       },
 
     ]

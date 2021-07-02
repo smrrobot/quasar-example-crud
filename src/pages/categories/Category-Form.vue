@@ -1,38 +1,13 @@
 <template>
-  <q-page class="col q-pl-lg q-pr-lg">
-
-
+  <q-page style="min-height: 0px;">
     <q-form class="" ref="form-products">
-      <div class="row q-mt-xl">
-        <div class="col-lg-5 col-xs-12 q-mr-xl">
-          <span class="text-subtitle1">Product Name *</span>
-          <q-input :rules="rules.name" outlined v-model="product.name" lazy-rules dense/>
-        </div>
-        <div class="col-lg-5 col-xs-12">
-          <span class="text-subtitle1 ">Category</span>
-          <q-input outlined v-model="product.category" lazy-rules dense/>
-        </div>
-      </div>
-      <div class="row q-mt-md">
-        <div class="col-12 ">
-          <span class="text-subtitle1">Description</span>
-          <q-input :rules="rules.description" outlined v-model="product.description"  lazy-rules dense type="textarea" />
-        </div>
-      </div>
-      <div class="row q-mt-md">
-        <div class="col-5 ">
-          <span class="text-subtitle1">Price</span>
-          <q-input outlined v-model="product.price" lazy-rules type="number" dense/>
-        </div>
-      </div>
-      <div class="row self-end justify-end q-mt-xl">
-        <div class="col-2" style="margin-top: 4%;">
-          <q-btn label="Save" color="positive" class="float-right" padding="sm xl" @click="submitForm"/>
-        </div>
-      </div>
+          <span class="text-subtitle1">Category Name *</span>
+          <q-input :rules="rules.name" outlined v-model="category.name" lazy-rules dense/>
+      <q-card-actions align="right" class="text-primary">
+        <q-btn flat label="Cancel" v-close-popup></q-btn>
+        <q-btn flat label="Submit" @click="submitForm" v-close-popup></q-btn>
+      </q-card-actions>
     </q-form>
-
-
   </q-page>
 </template>
 
@@ -58,21 +33,17 @@
       }
     },
     computed: {
-			...mapGetters({'getProducts': 'products/GET_PRODUCTS'})
+			...mapGetters({'getProducts': 'products/GET_CATEGORIES'})
     },
 
     data() {
       return {
-        product: {
+        category: {
           id: null,
           name: null,
-          category: null,
-          price: null,
-          description: null,
         },
         rules: {
 				  name: [val => !!val || 'Field is required'],
-          description: [val => !!val || 'Field is required']
         },
 
 
@@ -82,24 +53,23 @@
       submitForm() {
         this.$refs['form-products'].validate().then(isValid => {
           if (isValid) {
-            console.log(isValid)
 
             /* Call an Action */
-            let product = this.product;
+            let category = this.category;
 
 
-            if (product.id) {
+            if (!category.name) {
               this.newProd('Success! Product has been updated.','green','task_alt')
-              this.$store.dispatch('products/UPDATE_PRODUCT', product)
-              this.$router.push({ name: 'route-products' })
+              this.$store.dispatch('products/UPDATE_CATEGORY', category)
+              // this.$router.push({ name: 'route-categories' })
             } else {
               /* New */
-              // TODO: product ID
-              this.product.id = this.getProducts.length +1
-              this.$store.dispatch('products/SAVE_PRODUCT', product)
-              this.newProd('Success! Product has been added.','green','task_alt')
-              this.$router.push({ name: 'route-products' })
-              console.log(product)
+
+              this.category.id = this.getProducts.length +1
+              this.$store.dispatch('products/SAVE_CATEGORY', category)
+              this.newProd('Success! Category has been added.','green','task_alt')
+
+              // this.$router.push({ name: 'route-products' })
             }
           }
           else {
@@ -109,7 +79,7 @@
         })
       }
     },
-    // TODO: Setup for notification
+
     setup() {
       const $q = useQuasar()
       return {

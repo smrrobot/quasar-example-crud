@@ -12,15 +12,13 @@
       row-key="id"
       :pagination="pagination"
       :rows-per-page-options="rowsOptions"
-
-
       >
         <template v-slot:body="props">
           <q-tr :props="props">
 
-            <q-td key="category" :props="props">{{ props.row.category }}</q-td>
+            <q-td key="category" :props="props">{{ props.row.name }}</q-td>
             <q-td key="actions" :props="props" class="q-gutter-x-xs">
-              <q-btn color="blue" icon="edit" size=sm no-caps round @click="editCategory(props.row.id)"></q-btn>
+              <q-btn color="blue" icon="edit" size=sm no-caps round @click="prompt = true"></q-btn>
               <q-btn color="red" icon="delete" @click="deleteConfirmation(props.row.id)" size=sm no-caps round></q-btn>
             </q-td>
           </q-tr>
@@ -70,6 +68,8 @@
 
       </q-table>
 
+
+
       <!-- Delete Dialog -->
       <q-dialog v-model="confirm" persistent>
         <q-card>
@@ -84,11 +84,34 @@
           </q-card-actions>
         </q-card>
       </q-dialog>
+
+      <!-- ADD NEW RECORD DIALOG -->
+      <q-dialog v-model="prompt" persistent>
+        <q-card style="min-width: 350px">
+          <q-card-section>
+            <div class="text-h6">Your address</div>
+          </q-card-section>
+
+          <q-card-section class="q-pt-none">
+            <q-input dense v-model="address" autofocus @keyup.enter="prompt = false"></q-input>
+          </q-card-section>
+
+          <q-card-actions align="right" class="text-primary">
+            <q-btn flat label="Cancel" v-close-popup></q-btn>
+            <q-btn flat label="Add address" v-close-popup></q-btn>
+          </q-card-actions>
+        </q-card>
+      </q-dialog>
+
     </div>
   </q-page>
 </template>
 
 <script>
+  import { ref } from 'vue'
+  import { mapGetters } from 'vuex'
+
+
   const columns = [
     // {
     //   name: 'id',
@@ -112,8 +135,7 @@
     },
   ]
 
-  import { ref } from 'vue'
-  import { mapGetters } from 'vuex'
+
   export default {
     name: 'Category-Table',
     components: {
@@ -155,11 +177,12 @@
 
       }
     },
-
     setup() {
+
       return {
         columns,
-
+        prompt: ref(false),
+        address: ref(''),
         pagination: {
           sortBy: 'id',
           descending: true,
@@ -170,6 +193,15 @@
       }
 
     },
+    watch: {
+      addNewTrigger() {
+        if($route.name="route-category-form"){
+          return console.log('na Trigger')
+        }
+
+      }
+
+    }
 
 
   }

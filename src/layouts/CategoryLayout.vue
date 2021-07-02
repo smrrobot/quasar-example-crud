@@ -13,29 +13,47 @@
         <div class="col-6">
           <q-btn
             color="positive"
-            :label="buttonProduct"
+            label="New"
             size=".8rem"
-            :to="navRoute.togo"
             class="float-right q-mr-lg"
             padding="sm xl"
+            @click="prompt = true"
           />
 
         </div>
       </div>
       <BreadCrumbs/>
       <router-view />
+
+      <!-- ADD NEW RECORD DIALOG -->
+      <q-dialog v-model="prompt" persistent style="height: 200px; ">
+        <q-card style="min-width: 350px">
+          <q-card-section>
+            <div class="text-h6">Add New Category</div>
+          </q-card-section>
+
+          <q-card-section class="q-pt-none">
+            <!-- <q-input dense v-model="address" autofocus @keyup.enter="prompt = false"></q-input> -->
+            <CategoryForm/>
+          </q-card-section>
+        </q-card>
+      </q-dialog>
+
     </q-page-container>
 
   </q-layout>
 </template>
 
 <script>
-import { ref } from 'vue'
-import BreadCrumbs from 'components/BreadCrumbs.vue'
+import { ref } from 'vue';
+import BreadCrumbs from 'components/BreadCrumbs.vue';
+import CategoryForm from 'pages/categories/Category-Form.vue';
+
 export default {
   // name: 'LayoutName',
   components: {
-    BreadCrumbs
+    BreadCrumbs,
+    CategoryForm
   },
   data() {
     return {
@@ -47,16 +65,23 @@ export default {
   },
   computed: {
 
-    buttonProduct(){
+    // buttonProduct(){
 
-      if(this.$route.name === 'route-categories'){
-        this.navRoute.togo = '/categories/form/'
-        return this.navRoute.label = 'New'
-      }else if(this.$route.name === 'route-category-form'){
-        this.navRoute.togo = '/categories'
-        return this.label = 'Back'
-      }
+    //   if(this.$route.name === 'route-categories'){
+    //     this.navRoute.togo = '/categories/form/'
+    //     return this.navRoute.label = 'New'
+    //   }else if(this.$route.name === 'route-category-form'){
+    //     this.navRoute.togo = '/categories'
+    //     return this.label = 'Back'
+    //   }
+    // }
+  },
+  setup() {
+    return {
+      prompt: ref(false),
+      address: ref(''),
     }
+
   },
 
 }

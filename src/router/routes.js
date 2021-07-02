@@ -46,7 +46,8 @@ const routes = [
           {
             name: 'route-category-form',
             path: 'form/:id?',
-            component: () => import('pages/categories/Category-Form'),
+            // component: () => import('pages/categories/Category-Form'),
+
             meta: {
               title: 'Category Form'
             },
