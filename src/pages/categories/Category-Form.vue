@@ -17,20 +17,22 @@
   export default {
     name: 'Product-Form',
     beforeMount(){
-      let productId = this.$route.params.id;
-			console.log(productId);
+      let productId = this.rowID;
+
       if(productId){
 
-        let product = this.getProducts.filter(p => p.id === Number(productId));
-
+        let product = this.getProducts.filter(p => p.id === productId);
         if(product.length){
-          this.product.id = product[0].id;
-					this.product.name = product[0].name;
-					this.product.description = product[0].description;
-          this.product.price = product[0].price;
-          this.product.category = product[0].category;
+
+					this.category.name = product[0].name;
+          this.category.id = product[0].id;
+
         }
       }
+    },
+    beforeUnmount(){
+      this.category.id = null
+      this.category.name = null
     },
     computed: {
 			...mapGetters({'getProducts': 'products/GET_CATEGORIES'})
@@ -49,6 +51,13 @@
 
       }
     },
+    props: {
+      rowID: {
+        type: Number,
+        required: false,
+        default: 0
+      }
+    },
     methods: {
       submitForm() {
         this.$refs['form-products'].validate().then(isValid => {
@@ -58,9 +67,10 @@
             let category = this.category;
 
 
-            if (!category.name) {
-              this.newProd('Success! Product has been updated.','green','task_alt')
+            if (this.rowID) {
+              this.newProd('Success! Product has been updated.','blue','task_alt')
               this.$store.dispatch('products/UPDATE_CATEGORY', category)
+              console.log(category)
               // this.$router.push({ name: 'route-categories' })
             } else {
               /* New */
