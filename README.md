@@ -1,6 +1,9 @@
-# Product App (training-pxl8)
+# Product App
 
 A Quasar Framework app
+
+### Preview
+![Screenshot 2021-07-03 230356](https://user-images.githubusercontent.com/37179388/124358500-27057f00-dc53-11eb-9bac-6455b144e33b.jpg)
 
 ## Install the dependencies
 ```bash
@@ -21,5 +24,3 @@ quasar build
 ### Customize the configuration
 See [Configuring quasar.conf.js](https://v2.quasar.dev/quasar-cli/quasar-conf-js).
 
-### Preview
-![Screenshot 2021-07-03 230356](https://user-images.githubusercontent.com/37179388/124358500-27057f00-dc53-11eb-9bac-6455b144e33b.jpg)
