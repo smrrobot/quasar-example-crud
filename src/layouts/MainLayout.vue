@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title>
-          SMF
+          Quasar Example Crud with Vuex
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
@@ -58,12 +58,12 @@ const linksList = [
     // caption: 'quasar.dev',
     icon: 'inventory_2',
     link: 'route-products'
-  },{
+  }, {
     title: 'Categories',
     // caption: 'quasar.dev',
     icon: 'category',
     link: 'route-categories'
-  },{
+  }, {
     title: 'About',
     // caption: 'quasar.dev',
     icon: 'info',
@@ -77,9 +77,9 @@ import { defineComponent, ref } from 'vue'
 export default defineComponent({
   name: 'MainLayout',
 
-  data() {
+  data () {
     return {
-      bread:''
+      bread: ''
     }
   },
 
